@@ -1,0 +1,1378 @@
+
+:root {
+  --dash-bg: #f5f7fb;
+  --dash-surface: #ffffff;
+  --dash-text: #172033;
+  --dash-muted: #718096;
+  --dash-border: #e6eaf1;
+  --dash-primary: #4f46e5;
+  --dash-primary-dark: #4338ca;
+  --dash-radius: 18px;
+  --dash-shadow: 0 8px 30px rgba(31, 41, 55, 0.055);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.dashboard-page {
+  min-height: 100vh;
+  padding: 30px clamp(16px, 3.5vw, 48px);
+  color: var(--dash-text);
+  background: var(--dash-bg);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+.dashboard-page button,
+.dashboard-page input,
+.dashboard-page select {
+  font: inherit;
+}
+
+.dashboard-page button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dashboard-page button:focus-visible,
+.dashboard-page input:focus-visible,
+.dashboard-page select:focus-visible {
+  outline: 3px solid rgba(79, 70, 229, 0.24);
+  outline-offset: 3px;
+}
+
+.dashboard-header,
+.header-actions,
+.user-profile,
+.user-info,
+.section-header,
+.recent-header,
+.task-filter-heading,
+.account-modal-header,
+.account-form-actions,
+.employee-card-top,
+.employee-card-actions,
+.filtered-task-meta,
+.dashboard-footer {
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-header,
+.section-header,
+.recent-header,
+.task-filter-heading {
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.dashboard-header {
+  margin-bottom: 25px;
+}
+
+.dashboard-heading h1 {
+  margin: 5px 0 7px;
+  font-size: clamp(28px, 3vw, 35px);
+  letter-spacing: -1.1px;
+  font-weight: 800;
+}
+
+.dashboard-heading p,
+.section-header p,
+.recent-header p {
+  margin: 0;
+  color: var(--dash-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.eyebrow {
+  display: inline-block;
+  color: #7773d6;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.header-actions {
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+.icon-action-btn {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--dash-border);
+  border-radius: 12px;
+  color: #475569;
+  background: #fff;
+  cursor: pointer;
+}
+
+.icon-action-btn:hover {
+  color: var(--dash-primary);
+  border-color: #c7d2fe;
+}
+
+.spin-icon {
+  animation: dashboard-spin 0.8s linear infinite;
+}
+
+@keyframes dashboard-spin {
+  to { transform: rotate(360deg); }
+}
+
+.user-profile {
+  gap: 11px;
+  padding: 5px 13px 5px 5px;
+  border: 1px solid var(--dash-border);
+  border-radius: 14px;
+  background: white;
+}
+
+.user-avatar,
+.employee-avatar {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  color: #fff;
+  font-weight: 800;
+  background: linear-gradient(145deg, #6366f1, #4338ca);
+}
+
+.user-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  font-size: 17px;
+}
+
+.user-info {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.user-info strong {
+  max-width: 180px;
+  overflow: hidden;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-info span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--dash-muted);
+  font-size: 11px;
+  text-transform: capitalize;
+}
+
+.logout-btn,
+.create-account-btn,
+.secondary-btn,
+.account-cancel-btn,
+.view-employee-btn,
+.delete-account-btn,
+.text-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.logout-btn {
+  padding: 11px 14px;
+  color: #b42332;
+  background: #fff0f1;
+}
+
+.logout-btn:hover {
+  background: #ffe1e4;
+}
+
+.welcome-banner {
+  position: relative;
+  display: flex;
+  min-height: 178px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  overflow: hidden;
+  margin-bottom: 25px;
+  padding: 30px clamp(22px, 4vw, 42px);
+  border-radius: 22px;
+  color: white;
+  background: linear-gradient(115deg, #3730a3 0%, #4f46e5 56%, #7c73f6 100%);
+  box-shadow: 0 14px 32px rgba(79, 70, 229, 0.18);
+}
+
+.welcome-banner::after {
+  position: absolute;
+  top: -85px;
+  right: 100px;
+  width: 240px;
+  height: 240px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 50%;
+  content: "";
+}
+
+.welcome-content {
+  position: relative;
+  z-index: 1;
+}
+
+.welcome-label {
+  color: #dcdcff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.welcome-content h2 {
+  margin: 10px 0;
+  font-size: clamp(22px, 3vw, 29px);
+  letter-spacing: -0.7px;
+  font-weight: 800;
+}
+
+.welcome-content p {
+  max-width: 590px;
+  margin: 0;
+  color: #e5e7ff;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.welcome-icon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  flex-shrink: 0;
+  width: 88px;
+  height: 88px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  color: white;
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 15px;
+  padding: 22px 20px;
+  border: 1px solid var(--dash-border);
+  border-radius: var(--dash-radius);
+  text-align: left;
+  background: var(--dash-surface);
+  box-shadow: var(--dash-shadow);
+}
+
+button.stat-card {
+  width: 100%;
+}
+
+.stat-card-clickable {
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.stat-card-clickable:hover {
+  transform: translateY(-3px);
+  border-color: #c7d2fe;
+  box-shadow: 0 12px 26px rgba(31, 41, 55, 0.08);
+}
+
+.stat-card.active {
+  border-color: var(--dash-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.09);
+}
+
+.stat-card:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+.stat-icon {
+  display: grid;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  border-radius: 15px;
+}
+
+.stat-blue .stat-icon {
+  color: #2563eb;
+  background: #eaf2ff;
+}
+
+.stat-purple .stat-icon {
+  color: #6d4be8;
+  background: #f0eaff;
+}
+
+.stat-orange .stat-icon {
+  color: #c76a12;
+  background: #fff1df;
+}
+
+.stat-green .stat-icon {
+  color: #14804a;
+  background: #e1f8eb;
+}
+
+.stat-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat-title {
+  color: var(--dash-muted);
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+.stat-number {
+  color: var(--dash-text);
+  font-size: 29px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+}
+
+.stat-arrow {
+  margin-left: auto;
+  color: #a0a8b8;
+}
+
+.employees-section,
+.recent-tasks,
+.filtered-tasks-section {
+  margin-bottom: 30px;
+  padding: clamp(20px, 3vw, 30px);
+  border: 1px solid var(--dash-border);
+  border-radius: 20px;
+  background: var(--dash-surface);
+  box-shadow: var(--dash-shadow);
+}
+
+.section-header,
+.recent-header,
+.task-filter-heading {
+  margin-bottom: 23px;
+}
+
+.section-header h2,
+.recent-header h2,
+.task-filter-heading h2 {
+  margin: 5px 0 7px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.create-account-btn {
+  flex-shrink: 0;
+  padding: 12px 16px;
+  color: #fff;
+  background: var(--dash-primary);
+}
+
+.create-account-btn:hover {
+  background: var(--dash-primary-dark);
+  transform: translateY(-1px);
+}
+
+.create-account-btn:disabled,
+.delete-account-btn:disabled,
+.account-cancel-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.employees-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.employee-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid var(--dash-border);
+  border-radius: 16px;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.employee-card:hover {
+  transform: translateY(-2px);
+  border-color: #d4d5fa;
+  box-shadow: 0 9px 24px rgba(31, 41, 55, 0.06);
+}
+
+.employee-card-top {
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 17px;
+}
+
+.employee-avatar {
+  width: 49px;
+  height: 49px;
+  border-radius: 15px;
+  font-size: 19px;
+}
+
+.role-badge {
+  padding: 6px 9px;
+  border-radius: 30px;
+  color: #475569;
+  background: #f1f5f9;
+  font-size: 10px;
+  font-weight: 750;
+  text-transform: capitalize;
+}
+
+.role-admin {
+  color: #4338ca;
+  background: #eeebff;
+}
+
+.role-manager {
+  color: #0369a1;
+  background: #e0f2fe;
+}
+
+.role-employee {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.employee-info {
+  min-width: 0;
+  margin-bottom: 20px;
+}
+
+.employee-info h3 {
+  overflow-wrap: anywhere;
+  margin: 0 0 5px;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.employee-info p {
+  margin: 0 0 10px;
+  color: #667085;
+  font-size: 12px;
+}
+
+.employee-email {
+  display: block;
+  overflow-wrap: anywhere;
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.employee-card-actions {
+  align-items: stretch;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid #edf0f5;
+}
+
+.view-employee-btn {
+  flex: 1;
+  padding: 10px 11px;
+  color: #4338ca;
+  background: #efefff;
+}
+
+.view-employee-btn:hover {
+  background: #e4e4ff;
+}
+
+.delete-account-btn {
+  padding: 10px;
+  color: #b42332;
+  background: #fff0f1;
+}
+
+.delete-account-btn:hover {
+  background: #ffe0e4;
+}
+
+.task-management-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.management-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 21px;
+  border: 1px solid var(--dash-border);
+  border-radius: 16px;
+  background: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.management-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(31, 41, 55, 0.07);
+}
+
+.management-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 17px;
+  place-items: center;
+  border-radius: 14px;
+}
+
+.management-blue {
+  color: #2563eb;
+  background: #eaf2ff;
+}
+
+.management-purple {
+  color: #6d4be8;
+  background: #f0eaff;
+}
+
+.management-orange {
+  color: #c76a12;
+  background: #fff1df;
+}
+
+.management-green {
+  color: #14804a;
+  background: #e1f8eb;
+}
+
+.management-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.management-card p {
+  flex: 1;
+  margin: 0 0 18px;
+  color: var(--dash-muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.management-card button,
+.text-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0;
+  border: 0;
+  color: var(--dash-primary);
+  background: transparent;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.management-card button:hover,
+.text-action-btn:hover {
+  color: var(--dash-primary-dark);
+}
+
+.dashboard-footer {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 10px 2px 0;
+  color: var(--dash-muted);
+  font-size: 12px;
+}
+
+.secondary-btn {
+  padding: 10px 13px;
+  border: 1px solid var(--dash-border);
+  color: #475569;
+  background: #fff;
+}
+
+.secondary-btn:hover {
+  border-color: #c7d2fe;
+  color: var(--dash-primary);
+  background: #fafaff;
+}
+
+.filtered-task-list {
+  display: grid;
+  gap: 12px;
+}
+
+.filtered-task-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 17px;
+  border: 1px solid var(--dash-border);
+  border-radius: 13px;
+  background: #fff;
+}
+
+.filtered-task-main {
+  min-width: 0;
+}
+
+.filtered-task-main h3 {
+  overflow-wrap: anywhere;
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.filtered-task-main p {
+  margin: 0;
+  color: var(--dash-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.filtered-task-meta {
+  flex-wrap: wrap;
+  gap: 8px;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.status-badge {
+  display: inline-flex;
+  padding: 6px 9px;
+  border-radius: 30px;
+  font-size: 10px;
+  font-weight: 750;
+  text-transform: capitalize;
+}
+
+.status-pending {
+  color: #9a5800;
+  background: #fff0d2;
+}
+
+.status-in_progress {
+  color: #1d4ed8;
+  background: #e2ecff;
+}
+
+.status-completed {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.loading-box,
+.empty-box,
+.error-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 30px 18px;
+  border: 1px dashed var(--dash-border);
+  border-radius: 14px;
+  color: var(--dash-muted);
+  text-align: center;
+  background: #fafbfe;
+  font-size: 13px;
+}
+
+.empty-box {
+  flex-direction: column;
+  padding: 40px 20px;
+}
+
+.empty-box > svg {
+  color: #8b83e9;
+}
+
+.empty-box h3 {
+  margin: 5px 0 0;
+  color: var(--dash-text);
+  font-size: 15px;
+}
+
+.empty-box p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.error-box {
+  flex-wrap: wrap;
+  border-color: #fecaca;
+  color: #b42332;
+  background: #fff7f7;
+}
+
+.account-modal-overlay {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.57);
+  backdrop-filter: blur(5px);
+}
+
+.account-modal {
+  width: min(100%, 570px);
+  max-height: min(90vh, 850px);
+  overflow-y: auto;
+  padding: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 25px 90px rgba(15, 23, 42, 0.25);
+}
+
+.account-modal-header {
+  gap: 13px;
+  margin-bottom: 22px;
+}
+
+.modal-title-icon {
+  display: grid;
+  flex-shrink: 0;
+  width: 45px;
+  height: 45px;
+  place-items: center;
+  border-radius: 13px;
+  color: var(--dash-primary);
+  background: #efefff;
+}
+
+.modal-heading-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.account-modal-header h2 {
+  margin: 0 0 5px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.account-modal-header p {
+  margin: 0;
+  color: var(--dash-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.account-close-btn {
+  display: grid;
+  flex-shrink: 0;
+  width: 37px;
+  height: 37px;
+  place-items: center;
+  border: 0;
+  border-radius: 10px;
+  color: #64748b;
+  background: #f1f5f9;
+  cursor: pointer;
+}
+
+.account-close-btn:hover {
+  color: #b42332;
+  background: #fff0f1;
+}
+
+.account-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-field label {
+  color: #344054;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  min-width: 0;
+  min-height: 43px;
+  padding: 10px 12px;
+  border: 1px solid #d8dee9;
+  border-radius: 10px;
+  color: #172033;
+  background: #fff;
+  font-size: 13px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-field input::placeholder {
+  color: #9aa4b2;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  border-color: var(--dash-primary);
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.account-form-actions {
+  grid-column: 1 / -1;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 7px;
+  padding-top: 17px;
+  border-top: 1px solid var(--dash-border);
+}
+
+.account-cancel-btn {
+  padding: 11px 16px;
+  border: 1px solid var(--dash-border);
+  color: #475569;
+  background: white;
+}
+
+.account-cancel-btn:hover {
+  background: #f8fafc;
+}
+
+.account-success,
+.account-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 11px 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.account-success {
+  color: #166534;
+  background: #eaf9ef;
+}
+
+.account-error {
+  color: #b42332;
+  background: #fff0f1;
+}
+
+@media (max-width: 1200px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .employees-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .task-management-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .dashboard-page {
+    padding: 20px 14px;
+  }
+
+  .dashboard-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .header-actions {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .header-logout {
+    margin-left: auto;
+  }
+
+  .welcome-banner {
+    min-height: auto;
+    padding: 25px 21px;
+  }
+
+  .welcome-icon {
+    width: 63px;
+    height: 63px;
+    border-radius: 18px;
+  }
+
+  .welcome-icon svg {
+    width: 31px;
+    height: 31px;
+  }
+
+  .employees-section,
+  .recent-tasks,
+  .filtered-tasks-section {
+    padding: 19px;
+  }
+
+  .section-header,
+  .recent-header,
+  .task-filter-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .filtered-task-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .filtered-task-meta {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 520px) {
+  .stats-grid,
+  .employees-grid,
+  .task-management-cards,
+  .account-form {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    padding: 18px;
+  }
+
+  .stat-number {
+    font-size: 26px;
+  }
+
+  .welcome-icon {
+    display: none;
+  }
+
+  .create-account-btn {
+    width: 100%;
+  }
+
+  .account-modal-overlay {
+    align-items: flex-start;
+    padding: 12px;
+  }
+
+  .account-modal {
+    max-height: calc(100vh - 24px);
+    padding: 19px;
+    border-radius: 16px;
+  }
+
+  .account-form-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .account-form-actions button {
+    width: 100%;
+  }
+
+  .employee-card-actions {
+    flex-wrap: wrap;
+  }
+
+  .view-employee-btn {
+    min-width: 0;
+  }
+
+  .dashboard-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+
+/* ==========================================
+   DASHBOARD DESIGN CONSISTENCY FIX
+   ========================================== */
+
+.dashboard-page {
+  --dash-primary: #5145e5;
+  --dash-primary-dark: #4338ca;
+  --dash-bg: #f4f6fb;
+  --dash-surface: #ffffff;
+  --dash-text: #17233b;
+  --dash-muted: #687892;
+  --dash-border: #e2e8f3;
+  --dash-radius: 18px;
+  --dash-shadow: 0 4px 16px rgba(24, 39, 75, 0.035);
+
+  background: var(--dash-bg);
+  color: var(--dash-text);
+}
+
+/* Consistent section containers */
+.employees-section,
+.recent-tasks,
+.filtered-tasks-section {
+  margin: 0 0 24px;
+  padding: 26px;
+  border: 1px solid var(--dash-border);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: var(--dash-shadow);
+}
+
+/* Consistent headings */
+.section-header,
+.recent-header,
+.task-filter-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0 0 22px;
+}
+
+.section-header h2,
+.recent-header h2,
+.task-filter-heading h2 {
+  margin: 5px 0 7px;
+  color: var(--dash-text);
+  font-size: 22px;
+  line-height: 1.35;
+  font-weight: 750;
+  letter-spacing: -0.45px;
+}
+
+.section-header p,
+.recent-header p {
+  color: var(--dash-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Employee cards: consistent dimensions and spacing */
+.employees-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 18px;
+}
+
+.employee-card {
+  display: flex;
+  min-width: 0;
+  height: 100%;
+  flex-direction: column;
+  padding: 22px;
+  border: 1px solid var(--dash-border);
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.employee-card:hover {
+  transform: translateY(-2px);
+  border-color: #c9caff;
+  box-shadow: 0 8px 22px rgba(50, 55, 120, 0.06);
+}
+
+.employee-card-top {
+  min-height: 54px;
+  margin-bottom: 18px;
+}
+
+.employee-avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  color: #5145e5;
+  background: #eef1ff;
+  font-size: 21px;
+}
+
+.employee-info {
+  min-width: 0;
+  flex: 1;
+  margin-bottom: 18px;
+}
+
+.employee-info h3 {
+  margin: 0 0 6px;
+  color: var(--dash-text);
+  font-size: 15px;
+  line-height: 1.45;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+.employee-info p {
+  margin: 0 0 10px;
+  color: var(--dash-muted);
+  font-size: 12px;
+}
+
+.employee-email {
+  color: #52627c;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.role-badge {
+  padding: 7px 10px;
+  border-radius: 30px;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.employee-card-actions {
+  display: flex;
+  align-items: stretch;
+  gap: 9px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #edf0f6;
+}
+
+.view-employee-btn {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: #5145e5;
+  background: #efefff;
+  font-size: 13px;
+}
+
+.view-employee-btn:hover {
+  background: #e5e5ff;
+}
+
+.delete-account-btn {
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: #c6283d;
+  background: #fff0f1;
+  font-size: 12px;
+}
+
+.delete-account-btn:hover {
+  background: #ffe3e6;
+}
+
+/* Task and report cards match the employee cards */
+.task-management-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 18px;
+}
+
+.management-card {
+  display: flex;
+  min-width: 0;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 22px;
+  border: 1px solid var(--dash-border);
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.management-card:hover {
+  transform: translateY(-2px);
+  border-color: #c9caff;
+  box-shadow: 0 8px 22px rgba(50, 55, 120, 0.06);
+}
+
+.management-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  border-radius: 14px;
+}
+
+.management-card h3 {
+  margin: 0 0 8px;
+  color: var(--dash-text);
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 750;
+}
+
+.management-card p {
+  flex: 1;
+  margin: 0 0 20px;
+  color: var(--dash-muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.management-card button {
+  min-height: 24px;
+  color: #5145e5;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+/* Keep the main dashboard and lower sections visually connected */
+.dashboard-header {
+  margin-bottom: 25px;
+}
+
+.welcome-banner {
+  margin-bottom: 25px;
+  border-radius: 20px;
+}
+
+.stats-grid {
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.stat-card {
+  border-radius: 17px;
+  box-shadow: var(--dash-shadow);
+}
+
+/* Consistent buttons */
+.create-account-btn,
+.secondary-btn,
+.account-cancel-btn {
+  min-height: 42px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.create-account-btn {
+  padding: 11px 15px;
+  background: #5145e5;
+}
+
+.create-account-btn:hover {
+  background: #4338ca;
+}
+
+/* Filtered task rows */
+.filtered-task-card {
+  border-color: var(--dash-border);
+  border-radius: 14px;
+  background: #fff;
+}
+
+/* Tablet */
+@media (max-width: 1200px) {
+  .employees-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .task-management-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+  .employees-section,
+  .recent-tasks,
+  .filtered-tasks-section {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .section-header,
+  .recent-header,
+  .task-filter-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .employees-grid,
+  .task-management-cards {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .employee-card,
+  .management-card {
+    padding: 18px;
+  }
+
+  .employee-card-actions {
+    gap: 8px;
+  }
+
+  .view-employee-btn {
+    flex: 1;
+  }
+
+  .delete-account-btn {
+    flex-shrink: 0;
+  }
+
+  .section-header > .create-account-btn {
+    width: 100%;
+  }
+}
