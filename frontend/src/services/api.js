@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://etmp-backend.onrender.com",
+  baseURL: "https://backend-lime-kappa-76.vercel.app",
 });
 
 api.interceptors.request.use(
